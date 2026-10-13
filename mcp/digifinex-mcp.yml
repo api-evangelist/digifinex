@@ -1,0 +1,32 @@
+name: DigiFinex MCP Server (candidate)
+generated: '2026-10-13'
+method: derived
+source: openapi/_ae-authored/digifinex-spot-openapi-generated.yml
+status: candidate
+note: No official DigiFinex MCP server was found; www.digifinex.com/mcp answered 403 and support.digifinex.com/mcp 401 to the pre-flight probe, which the dossier graded opaque (the edge, not an MCP server). Tools below are a candidate mapping from documented public market-data operations.
+deployment:
+  mode: none
+  auth: api-key
+  verified: derived
+tools:
+- name: get_ticker
+  operation: get_ticker
+  description: ticker price
+- name: get_order_book
+  operation: get_order_book
+  description: Get orderbook
+- name: get_recent_trades
+  operation: get_trades
+  description: Get recent trades
+- name: get_candles
+  operation: get_kline
+  description: Get candles data
+- name: list_markets
+  operation: get_markets
+  description: All the market description
+- name: get_swap_ticker
+  operation: get_public_ticker
+  description: Ticker (perpetual swap)
+- name: get_swap_funding_rate
+  operation: get_public_funding_rate
+  description: CurrentFundingRate

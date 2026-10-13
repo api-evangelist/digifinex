@@ -1,0 +1,1688 @@
+openapi: 3.1.0
+info:
+  title: DigiFinex Perpetual Swap REST API
+  version: '2.0'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 41 operation(s) read from the public reference
+    page https://docs.digifinex.com/en-ww/swap/v2/rest.html (each operation names its page in x-source; every path and method
+    is copied verbatim from the page, parameters from its request tables). This is not the provider''s published contract;
+    DigiFinex has published no machine-readable contract that the pipeline could find. Public/private split per the docs (public
+    market-data endpoints need no signature).'
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: scratch build.py (verbatim table extraction, no model)
+  x-sources:
+  - https://docs.digifinex.com/en-ww/swap/v2/rest.html
+servers:
+- url: https://openapi.digifinex.com/swap/v2
+tags:
+- name: Account
+- name: Copy Trading
+- name: Market Data
+- name: Trading
+paths:
+  /public/time:
+    get:
+      operationId: get_public_time
+      tags:
+      - Market Data
+      summary: Server Time
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/api_weight:
+    get:
+      operationId: get_public_api_weight
+      tags:
+      - Market Data
+      summary: Api Weight
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/instruments:
+    get:
+      operationId: get_public_instruments
+      tags:
+      - Market Data
+      summary: Instruments
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: instrument type 1 simulate 2 real default real
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/instrument:
+    get:
+      operationId: get_public_instrument
+      tags:
+      - Market Data
+      summary: Instrument
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/depth:
+    get:
+      operationId: get_public_depth
+      tags:
+      - Market Data
+      summary: OrderBook
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'request level: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/trades:
+    get:
+      operationId: get_public_trades
+      tags:
+      - Market Data
+      summary: RecentTrades
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'request level: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/ticker:
+    get:
+      operationId: get_public_ticker
+      tags:
+      - Market Data
+      summary: Ticker
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/tickers:
+    get:
+      operationId: get_public_tickers
+      tags:
+      - Market Data
+      summary: Tickers
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: instrument type 1 simulate 2 real default real
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/candles:
+    get:
+      operationId: get_public_candles
+      tags:
+      - Market Data
+      summary: RecentCandle
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: granularity
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'candle granularity: 1m 5m 15m 30m 1h 4h 12h 1d 1w'
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: number
+        description: 'return raws: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/funding_rate:
+    get:
+      operationId: get_public_funding_rate
+      tags:
+      - Market Data
+      summary: CurrentFundingRate
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/candles_history:
+    get:
+      operationId: get_public_candles_history
+      tags:
+      - Market Data
+      summary: CandleHistory
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: granularity
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'candle granularity: 1m 5m 15m 30m 1h 4h 12h 1d 1w'
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /public/funding_rate_history:
+    get:
+      operationId: get_public_funding_rate_history
+      tags:
+      - Market Data
+      summary: FundingRateHistory
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/balance:
+    get:
+      operationId: get_account_balance
+      tags:
+      - Account
+      summary: AccountBalance
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'instrument type: 1 Simulate 2 Real'
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency, currency has higher priority than type
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/transfer:
+    post:
+      operationId: post_account_transfer
+      tags:
+      - Account
+      summary: AccountTransfer
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              - currency
+              - transfer_amount
+              properties:
+                type:
+                  type: number
+                  description: 'transfer type 1: spot to swap, 2 swap to spot'
+                currency:
+                  type: string
+                  description: transfer currency
+                transfer_amount:
+                  type: string
+                  description: transfer amount
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/positions:
+    get:
+      operationId: get_account_positions
+      tags:
+      - Account
+      summary: Positions
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'instrument type: 1 Simulate 2 Real'
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id, instrument id has higher priority than type
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/position_mode:
+    post:
+      operationId: post_account_position_mode
+      tags:
+      - Account
+      summary: PositionMode
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - margin_mode
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                margin_mode:
+                  type: string
+                  description: 'position mode: "crossed" or "isolated"'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/position_margin:
+    post:
+      operationId: post_account_position_margin
+      tags:
+      - Account
+      summary: PositionMargin
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - side
+              - type
+              - amount
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                side:
+                  type: string
+                  description: 'position side: "long" or "short"'
+                type:
+                  type: number
+                  description: type 1 add, 2 reduce
+                amount:
+                  type: string
+                  description: operate amount
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/leverage:
+    post:
+      operationId: post_account_leverage
+      tags:
+      - Account
+      summary: SetLeverage
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - leverage
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                leverage:
+                  type: number
+                  description: leverage
+                margin_mode:
+                  type: string
+                  description: 'position mode: "crossed" or "isolated"'
+                side:
+                  type: string
+                  description: 'position side: "long" or "short", valid only in isolated mode'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/trading_fee_rate:
+    get:
+      operationId: get_account_trading_fee_rate
+      tags:
+      - Account
+      summary: TradingFee
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/finance_record:
+    get:
+      operationId: get_account_finance_record
+      tags:
+      - Account
+      summary: Bills
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency
+      - name: finance_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: finance type 1:transfer in 2:transfer out 3:open long 4:open short 5:close long 6:close short 9:ADL-close
+          short 10:ADL-close long 15:funding fee 16:experience token
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/funding_fee:
+    get:
+      operationId: get_account_funding_fee
+      tags:
+      - Account
+      summary: Funding Fee
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /account/transfer_record:
+    get:
+      operationId: get_account_transfer_record
+      tags:
+      - Account
+      summary: TransferRecord
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: transfer currency
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/order_place:
+    post:
+      operationId: post_trade_order_place
+      tags:
+      - Trading
+      summary: OrderPlace
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - type
+              - order_type
+              - size
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                type:
+                  type: number
+                  description: 'type: 1 open long 2 open short 3 close long 4 close short'
+                order_type:
+                  type: number
+                  description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20
+                    4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent
+                    11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+                size:
+                  type: number
+                  description: order size
+                price:
+                  type: string
+                  description: order price, necessary if not market order
+                post_only:
+                  type: boolean
+                  description: is post-only order, default false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/cancel_order:
+    post:
+      operationId: post_trade_cancel_order
+      tags:
+      - Trading
+      summary: CancelOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - order_id
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                order_id:
+                  type: string
+                  description: order ID
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/batch_order:
+    post:
+      operationId: post_trade_batch_order
+      tags:
+      - Trading
+      summary: BatchOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - type
+              - order_type
+              - size
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                type:
+                  type: number
+                  description: 'type: 1 open long 2 open short 3 close long 4 close short'
+                order_type:
+                  type: number
+                  description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20
+                    4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent
+                    11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+                size:
+                  type: number
+                  description: order size
+                price:
+                  type: string
+                  description: order price, necessary if not market order
+                post_only:
+                  type: boolean
+                  description: is post-only order, default false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/batch_cancel_order:
+    post:
+      operationId: post_trade_batch_cancel_order
+      tags:
+      - Trading
+      summary: BatchCancel
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - order_id
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                order_id:
+                  type: string
+                  description: order ID
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/open_orders:
+    get:
+      operationId: get_trade_open_orders
+      tags:
+      - Trading
+      summary: OpenOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'type: 1 open long 2 open short 3 close long 4 close short'
+      - name: order_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4:
+          IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5
+          12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+      - name: order_status
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'order status: 0: open 1: part filled'
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/order_info:
+    get:
+      operationId: get_trade_order_info
+      tags:
+      - Trading
+      summary: OrderInfo
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrumnent id
+      - name: order_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: order id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/history_orders:
+    get:
+      operationId: get_trade_history_orders
+      tags:
+      - Trading
+      summary: HistoryOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'type: 1 open long 2 open short 3 close long 4 close short'
+      - name: order_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4:
+          IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5
+          12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+      - name: order_status
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'order status: -1: canceled 2: filled'
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/history_trades:
+    get:
+      operationId: get_trade_history_trades
+      tags:
+      - Trading
+      summary: HistoryTrade
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'type: 1 open long 2 open short 3 close long 4 close short'
+      - name: order_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4:
+          IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5
+          12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+      - name: order_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: order id
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/sponsor_order:
+    post:
+      operationId: post_follow_sponsor_order
+      tags:
+      - Copy Trading
+      summary: ExpertSponsorOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - margin_mode
+              - type
+              - leverage
+              - order_type
+              - limit_price
+              - order_num
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                margin_mode:
+                  type: number
+                  description: 'position mode: 1 crossed 2 isolated'
+                type:
+                  type: number
+                  description: 'type: 1 open long 2 open short'
+                leverage:
+                  type: number
+                  description: leverage
+                order_type:
+                  type: number
+                  description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20
+                    4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent
+                    11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+                limit_price:
+                  type: string
+                  description: order price, necessary if not market
+                order_num:
+                  type: number
+                  description: order size
+                order_earn_trigger_price_type:
+                  type: number
+                  description: 'stop earn trigger price type: 1 index price 2 marker price 3 market price'
+                order_loss_trigger_price_type:
+                  type: number
+                  description: 'stop loss trigger price type: 1 index price 2 marker price 3 market price'
+                stop_earn_trigger_price:
+                  type: string
+                  description: stop earn trigger price
+                stop_loss_trigger_price:
+                  type: string
+                  description: stop loss trigger price type
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/close_order:
+    post:
+      operationId: post_follow_close_order
+      tags:
+      - Copy Trading
+      summary: CloseOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - open_order_id
+              properties:
+                open_order_id:
+                  type: string
+                  description: order id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/cancel_order:
+    post:
+      operationId: post_follow_cancel_order
+      tags:
+      - Copy Trading
+      summary: CancelCurrentOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_i:
+                  type: string
+                  description: order id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/user_center_current:
+    post:
+      operationId: post_follow_user_center_current
+      tags:
+      - Copy Trading
+      summary: UserCenterCurrent
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              properties:
+                page:
+                  type: number
+                  description: page, default 1
+                size:
+                  type: number
+                  description: size,default 10
+                instrument_id:
+                  type: string
+                  description: instrument id
+                type:
+                  type: number
+                  description: 1 Detailed 2 Summary
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/user_center_history:
+    post:
+      operationId: post_follow_user_center_history
+      tags:
+      - Copy Trading
+      summary: UserCenterHistory
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: page, default 1
+                size:
+                  type: number
+                  description: size,default 10
+                instrument_id:
+                  type: string
+                  description: instrument id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/expert_current_open_order:
+    post:
+      operationId: post_follow_expert_current_open_order
+      tags:
+      - Copy Trading
+      summary: ExpertCurrentOpenOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: page, default 1
+                size:
+                  type: number
+                  description: size, default 10
+                instrument_id:
+                  type: string
+                  description: instrument id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/add_algo:
+    post:
+      operationId: post_follow_add_algo
+      tags:
+      - Copy Trading
+      summary: AddStopProfitOrderOrStopLossOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: string
+                  description: order_id
+                profit_trigger_type:
+                  type: number
+                  description: price type:1 index price 2 marker price 3 market price
+                profit_trigger_price:
+                  type: string
+                  description: stop profit price
+                stop_trigger_type:
+                  type: number
+                  description: type:1 index price 2 marker price 3 market price
+                stop_trigger_price:
+                  type: string
+                  description: stop loss price
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/cancel_algo:
+    post:
+      operationId: post_follow_cancel_algo
+      tags:
+      - Copy Trading
+      summary: CancelStopLossOrStopProfitOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: string
+                  description: order_id
+                stop_profit:
+                  type: number
+                  description: 1 cancel stop profit order 0 not cancel
+                stop_loss:
+                  type: number
+                  description: 1 cancel stop loss order 0 not cancel
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/account_available:
+    post:
+      operationId: post_follow_account_available
+      tags:
+      - Copy Trading
+      summary: AccountAvailableBalance
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/plan_task:
+    post:
+      operationId: post_follow_plan_task
+      tags:
+      - Copy Trading
+      summary: PlanCommissionList
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - page
+              - size
+              properties:
+                page:
+                  type: number
+                  description: page lte50
+                size:
+                  type: number
+                  description: size
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /follow/instrument_list:
+    post:
+      operationId: post_follow_instrument_list
+      tags:
+      - Copy Trading
+      summary: InstrumentList
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+components:
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: User's API-KEY
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: HMAC-SHA256 signature of the request parameters, keyed by the API secret, as documented
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Timestamp in seconds (spot); requests more than 5 seconds old are rejected unless ACCESS-RECV-WINDOW is
+        set

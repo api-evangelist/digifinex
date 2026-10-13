@@ -1,0 +1,1042 @@
+openapi: 3.1.0
+info:
+  title: DigiFinex Spot and Margin REST API
+  version: '3.0'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 29 operation(s) read from the public reference
+    page https://docs.digifinex.com/en-ww/spot/v3/rest.html (each operation names its page in x-source; every path and method
+    is copied verbatim from the page, parameters from its request tables). This is not the provider''s published contract;
+    DigiFinex has published no machine-readable contract that the pipeline could find. Public/private split per the docs (public
+    market-data endpoints need no signature).'
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: scratch build.py (verbatim table extraction, no model)
+  x-sources:
+  - https://docs.digifinex.com/en-ww/spot/v3/rest.html
+servers:
+- url: https://openapi.digifinex.com/v3
+tags:
+- name: Account
+- name: Margin
+- name: Market Data
+- name: Orders
+paths:
+  /ping:
+    get:
+      operationId: get_ping
+      tags:
+      - Market Data
+      summary: Server ping
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /time:
+    get:
+      operationId: get_time
+      tags:
+      - Market Data
+      summary: Server timestamp
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /markets:
+    get:
+      operationId: get_markets
+      tags:
+      - Market Data
+      summary: All the market description
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /ticker:
+    get:
+      operationId: get_ticker
+      tags:
+      - Market Data
+      summary: ticker price
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: symbol
+        in: query
+        required: false
+        schema:
+          type: string
+        description: '"btc_usdt"'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /order_book:
+    get:
+      operationId: get_order_book
+      tags:
+      - Orders
+      summary: Get orderbook
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: symbol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: '"btc_usdt"'
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Limit of depth, default 10, maximum 150
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trades:
+    get:
+      operationId: get_trades
+      tags:
+      - Market Data
+      summary: Get recent trades
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: symbol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: '"btc_usdt"'
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Limit of trades returned, default 100, maximum 500
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /kline:
+    get:
+      operationId: get_kline
+      tags:
+      - Market Data
+      summary: Get candles data
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: symbol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: '"btc_usdt"'
+      - name: period
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Candle timeframe type: 1,5,15,30,60,240,720,1D,1W'
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Candle starting time in timestamp, default 200 period befor end_time
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Candle ending time in timestamp, default current timestamp
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /spot/symbols:
+    get:
+      operationId: get_spot_symbols
+      tags:
+      - Market Data
+      summary: Spot trading pair symbol
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /margin/currencies:
+    get:
+      operationId: get_margin_currencies
+      tags:
+      - Margin
+      summary: Currencies which support margin trading
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /margin/symbols:
+    get:
+      operationId: get_margin_symbols
+      tags:
+      - Margin
+      summary: Margin trading pair symbol
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trades/symbols:
+    get:
+      operationId: get_trades_symbols
+      tags:
+      - Market Data
+      summary: Whether is API trading enabled for the trading pair
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /currencies:
+    get:
+      operationId: get_currencies
+      tags:
+      - Market Data
+      summary: Get currency deposit and withdrawal information
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: cryptocurrency
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /spot/assets:
+    get:
+      operationId: get_spot_assets
+      tags:
+      - Account
+      summary: Spot account assets
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /margin/assets:
+    get:
+      operationId: get_margin_assets
+      tags:
+      - Margin
+      summary: Margin assets
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/financelog:
+    get:
+      operationId: get_market_financelog
+      tags:
+      - Account
+      summary: Spot, margin, OTC financial logs
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      - name: currency_mark
+        in: query
+        required: false
+        schema:
+          type: string
+        description: ''
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: ''
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Default 100, maximum 1000
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/order:
+    get:
+      operationId: get_market_order
+      tags:
+      - Orders
+      summary: Get order status
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      - name: order_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order ID list, separated by commas, limit of 20
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/order/detail:
+    get:
+      operationId: get_market_order_detail
+      tags:
+      - Orders
+      summary: Get order trades details
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      - name: order_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order ID
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/order/current:
+    get:
+      operationId: get_market_order_current
+      tags:
+      - Orders
+      summary: Current active orders
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      - name: symbol
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Symbol Name
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/order/history:
+    get:
+      operationId: get_market_order_history
+      tags:
+      - Orders
+      summary: Get all orders (including history orders)
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      - name: symbol
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Symbol Name
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Default 10, maximum 100
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Starting time, default 3 days before now, maximum 30 days
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Ending time, default current timestamp
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/mytrades:
+    get:
+      operationId: get_market_mytrades
+      tags:
+      - Orders
+      summary: Customer's trades
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      - name: symbol
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Symbol Name
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Default 50, maximum 500
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Starting time, default 3 days before now, maximum 30 days
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Ending time, default current timestamp
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /margin/positions:
+    get:
+      operationId: get_margin_positions
+      tags:
+      - Margin
+      summary: Margin positions
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: symbol
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Symbol Name
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/order/new:
+    post:
+      operationId: post_market_order_new
+      tags:
+      - Orders
+      summary: Create new order
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - symbol
+              - type
+              - amount
+              properties:
+                symbol:
+                  type: string
+                  description: Symbol Name
+                type:
+                  type: string
+                  description: buy for limit buy order, sell for limit sell order, buy_market for market buy order, sell_market
+                    for market sell order
+                amount:
+                  type: number
+                  description: Order amount, value in quote currency for market orders and base currency in other order types
+                price:
+                  type: number
+                  description: Order price required for limit order
+                post_only:
+                  type: integer
+                  description: Default 0, enabled by 1, if enabled the order will be cancelled if it can be executed immediately,
+                    making sure there will be no market taking
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/order/batch_new:
+    post:
+      operationId: post_market_order_batch_new
+      tags:
+      - Orders
+      summary: Create multiple order
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - symbol
+              - list
+              properties:
+                symbol:
+                  type: string
+                  description: Symbol Name
+                list:
+                  type: string
+                  description: order list, must be json-format, eg:[{"type":"buy","amount":0.1,"price":6000,"post_only":1},{"type":"sell","amount":0.1,"price":6100,"post_only":0}]
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /{market}/order/cancel:
+    post:
+      operationId: post_market_order_cancel
+      tags:
+      - Orders
+      summary: Cancel order
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - order_id
+              properties:
+                order_id:
+                  type: string
+                  description: Order ID list, separated by commas
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /transfer:
+    post:
+      operationId: post_transfer
+      tags:
+      - Account
+      summary: Transfer assets among accounts
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - currency_mark
+              - num
+              - from
+              - to
+              properties:
+                currency_mark:
+                  type: string
+                  description: Currency
+                num:
+                  type: string
+                  description: Transfer amount
+                from:
+                  type: integer
+                  description: Transfer from, 1 for spot account, 2 for margin account, 3 for OTC account
+                to:
+                  type: integer
+                  description: Transfer to, 1 for spot account, 2 for margin account, 3 for OTC account
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /margin/position/close:
+    post:
+      operationId: post_margin_position_close
+      tags:
+      - Margin
+      summary: Close positions
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - symbol
+              properties:
+                symbol:
+                  type: string
+                  description: Symbol Name
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /deposit/address:
+    get:
+      operationId: get_deposit_address
+      tags:
+      - Account
+      summary: Deposit address inquiry
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: true
+        schema:
+          type: string
+        description: btc, ltc, bch, eth, etc ...
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /deposit/history:
+    get:
+      operationId: get_deposit_history
+      tags:
+      - Account
+      summary: Deposit history
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: query initial ID
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Query record size
+      - name: direct
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns to the sorting direction of the record
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /withdraw/history:
+    get:
+      operationId: get_withdraw_history
+      tags:
+      - Account
+      summary: Withdrawal history
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+        description: query initial ID
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: string
+        description: query record size
+      - name: direct
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Return to the sorting direction of the record
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+components:
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: User's API-KEY
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: HMAC-SHA256 signature of the request parameters, keyed by the API secret, as documented
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Timestamp in seconds (spot); requests more than 5 seconds old are rejected unless ACCESS-RECV-WINDOW is
+        set

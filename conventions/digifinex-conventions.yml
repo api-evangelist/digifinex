@@ -1,0 +1,57 @@
+generated: '2026-10-13'
+method: searched
+source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+sources:
+- https://docs.digifinex.com/en-ww/spot/v3/rest.html
+- https://docs.digifinex.com/en-ww/swap/v2/rest.html
+authentication:
+  style: signed-headers
+  headers: [ACCESS-KEY, ACCESS-SIGN, ACCESS-TIMESTAMP]
+  quote: 'All sign required endpoints must be requested with header: ACCESS-KEY User''s API-KEY ACCESS-SIGN Signature ACCESS-TIMESTAMP Timestamp in seconds'
+  replay_window: The request will be considered invalid if the timestamp passed to server was behind more than 5 seconds (the time window can be customized with ACCESS-RECV-WINDOW parameter in the request header)
+  docs: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+idempotency:
+  coverage: none
+  mechanism: null
+  header: null
+  retention: null
+  docs: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+  note: Neither the spot v3 nor the swap v2 reference documents an idempotency key or client order id on order placement.
+reversibility:
+  surfaces:
+  - surface: spot/margin orders
+    reversal: cancel
+    operations: [post_market_order_cancel]
+    window: while the order is open (unfilled or partially filled)
+  - surface: swap orders
+    reversal: cancel
+    operations: [post_trade_cancel_order, post_trade_batch_cancel_order]
+    window: while the order is open
+  - surface: copy-trading orders and take-profit/stop-loss
+    reversal: cancel / close
+    operations: [post_follow_cancel_order, post_follow_cancel_algo, post_follow_close_order]
+  - surface: transfers and withdrawals
+    reversal: none documented
+    operations: [post_transfer, post_account_transfer]
+pagination:
+  style: offset-and-time-window
+  params: [limit, start_time, end_time, from, size, page]
+  note: Spot history endpoints take limit plus start_time/end_time; deposit/withdraw history take from/size/direct; swap copy-trading lists take page/size.
+error_envelope:
+  shape: '{"code": <int>, ...}'
+  success: code 0
+  catalog: errors/digifinex-error-codes.yml
+versioning:
+  scheme: path
+  current: [v3 (spot), v2 (swap), ws v1 (spot websocket), swap_ws v2]
+rate_limit_signaling:
+  status: 429
+  headers: [retry-after, ip-weight-minute-use, ip-weight-minute-remain, account-weight-minute-use, account-weight-minute-remain, apikey-weight-minute-use, apikey-weight-minute-remain]
+  detail: rate-limits/digifinex-rate-limits.yml
+streaming:
+  websocket:
+  - url: wss://openapi.digifinex.com/ws/v1/
+    docs: https://docs.digifinex.com/en-ww/spot/v1/websocket.html
+    channels: [ticker, all_ticker, depth, trades, balance, order, order_algo]
+  - url: wss://openapi.digifinex.com/swap_ws/v2/
+    docs: https://docs.digifinex.com/en-ww/swap/v2/websocket.html

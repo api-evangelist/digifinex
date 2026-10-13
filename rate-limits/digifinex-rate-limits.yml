@@ -1,0 +1,41 @@
+# Rate limits transcribed from the provider's own documentation. Quoted, not derived.
+generated: '2026-10-13'
+method: searched
+source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+name: DigiFinex API Rate Limits
+sources:
+- https://docs.digifinex.com/en-ww/swap/v2/rest.html
+- https://docs.digifinex.com/en-ww/spot/v3/rest.html
+published: true
+note: The swap API meters a per-minute weight budget per IP (public) and per account and API key (private); each route has its own weight, queryable at GET /swap/v2/public/api_weight. No numeric per-minute totals are published. The spot API publishes only the withdrawal limit below and error 10005 for exceeded frequency.
+limit_count: 4
+limits:
+- name: Public endpoint IP weight
+  limit_text: Public endpoint must observe IP limits rule
+  window: minute
+  scope: ip
+- name: Private endpoint account and API key weight
+  limit_text: private endpoint must observe account and APIKey limits rule
+  window: minute
+  scope: account
+- name: Escalating ban duration
+  limit_text: IP/account/APIKey bans are tracked and scale in duration for repeat offenders, from 2 minutes to 1 day
+  scope: ip
+- name: Spot withdrawal frequency
+  limit_text: 'Withdraw too frequently; limitation: 3 times a minute, 100 times a day'
+  limit: 3
+  max: 3
+  window: minute
+  scope: account
+signaling:
+  status_on_exhaustion: 429
+  ban_status: 403
+  headers:
+  - retry-after
+  - ip-weight-minute-use
+  - ip-weight-minute-remain
+  - account-weight-minute-use
+  - account-weight-minute-remain
+  - apikey-weight-minute-use
+  - apikey-weight-minute-remain
+  quote: When a 429 is received, it's your obligation as an API to back off and not spam the API.

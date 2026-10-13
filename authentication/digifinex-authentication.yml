@@ -1,0 +1,25 @@
+name: DigiFinex API Authentication
+generated: '2026-10-13'
+method: searched
+source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+docs: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+schemes:
+- name: accessKey
+  type: apiKey
+  in: header
+  header: ACCESS-KEY
+  description: User's API-KEY
+- name: accessSign
+  type: apiKey
+  in: header
+  header: ACCESS-SIGN
+  description: Signature of the request (query string and request body concatenated with '&', query string first), signed with the API secret
+- name: accessTimestamp
+  type: apiKey
+  in: header
+  header: ACCESS-TIMESTAMP
+  description: Timestamp in seconds; requests more than 5 seconds old are rejected unless ACCESS-RECV-WINDOW is set
+notes:
+- Public market-data endpoints require no signature; account, trading, transfer and wallet endpoints are signed.
+- 'Each API Key has permission property, please check the API permission'
+- Error 10007 "IP address Unauthorized" indicates per-key IP allowlisting.

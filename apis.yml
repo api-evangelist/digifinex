@@ -1,23 +1,141 @@
 aid: digifinex
+
 name: DigiFinex
-description: 'DigiFinex is a company surfaced via the API Evangelist harvest backlog (source: market-gap:crypto-exchanges)
-  and added to the network as a stub for full-pipeline profiling.'
+
+description: 'DigiFinex is a centralized cryptocurrency exchange offering spot, margin and perpetual swap (USDT-margined)
+  trading, OTC, copy trading and a crypto card. It publishes a public developer API: a signed REST API for spot and
+  margin (openapi.digifinex.com/v3), a REST API for perpetual swaps (openapi.digifinex.com/swap/v2), and WebSocket
+  market and account streams, documented at docs.digifinex.com. Private endpoints are signed with ACCESS-KEY,
+  ACCESS-SIGN (HMAC-SHA256) and ACCESS-TIMESTAMP headers.'
+
 url: https://raw.githubusercontent.com/api-evangelist/digifinex/refs/heads/main/apis.yml
+
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+
 x-type: company
+
 x-source: harvest:market-gap:crypto-exchanges
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+
+x-tier-reason: enriched local-v5 2026-10-13 (70 documented REST operations captured as docs-generated OpenAPI)
+
 specificationVersion: '0.20'
+
 created: '2026-10-13'
+
 modified: '2026-10-13'
+
 tags:
 - Company
-apis: []
+- Cryptocurrency
+- Exchanges
+- Trading
+- Derivatives
+- WebSockets
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: RateLimits
+  url: rate-limits/digifinex-rate-limits.yml
+- type: Spectral
+  url: rules/digifinex-rules.yml
+- type: Vocabulary
+  url: vocabulary/digifinex-vocabulary.yml
+- type: Conventions
+  url: conventions/digifinex-conventions.yml
+- type: Authentication
+  url: authentication/digifinex-authentication.yml
+- type: ErrorCatalog
+  url: errors/digifinex-error-codes.yml
+- type: Conformance
+  url: conformance/digifinex-conformance.yml
+- type: Hosts
+  url: hosts/digifinex-hosts.yml
+- type: Vendors
+  url: vendors/digifinex-vendors.yml
+- type: DomainSecurity
+  url: security/digifinex-domain-security.yml
 - type: Website
   url: https://www.digifinex.com
+- type: Documentation
+  url: https://docs.digifinex.com/en-ww/
+- type: APIReference
+  url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+- type: Support
+  url: https://support.digifinex.com/hc/en-us
+- type: Login
+  url: https://www.digifinex.com/en-ww/n/login
+- type: SignUp
+  url: https://www.digifinex.com/en-ww/n/register
+- type: GitHubOrganization
+  url: https://github.com/DigiFinex
+- type: About
+  url: https://www.digifinex.com/en-ww/about
+- type: Documentation
+  url: https://docs.digifinex.com/en-ww/spot/v1/websocket.html
+  name: Spot WebSocket API
+- type: Documentation
+  url: https://docs.digifinex.com/en-ww/swap/v2/websocket.html
+  name: Swap WebSocket API
+
+apis:
+- aid: digifinex:digifinex-spot-api
+  name: DigiFinex Spot and Margin REST API
+  description: Signed REST API (v3) for DigiFinex spot and margin market data, accounts, orders, transfers, deposits
+    and withdrawals.
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  baseURL: https://openapi.digifinex.com/v3
+  tags:
+  - Spot
+  - Margin
+  - Trading
+  properties:
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  - type: OpenAPI
+    url: openapi/_ae-authored/digifinex-spot-openapi-generated.yml
+    x-provenance: generated
+- aid: digifinex:digifinex-swap-api
+  name: DigiFinex Perpetual Swap REST API
+  description: REST API (v2) for DigiFinex perpetual swap (contract) market data, accounts, positions and orders.
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+  baseURL: https://openapi.digifinex.com/swap/v2
+  tags:
+  - Derivatives
+  - Perpetual Swaps
+  - Trading
+  properties:
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+  - type: OpenAPI
+    url: openapi/_ae-authored/digifinex-swap-openapi-generated.yml
+    x-provenance: generated
+
+x-coverage:
+  state: none
+  reason: no-developer-program
+  method: derived
+  generated: '2026-10-13'
+  generator: derive-coverage.py (pre-flight evidence)
+  detail: >-
+    the company publishes no developer documentation host and no machine-readable contract on its own domain
+  evidence:
+  - url: https://www.digifinex.com/mcp
+    status: 403
+  - url: https://support.digifinex.com/mcp
+    status: 401
+  - url: https://www.digifinex.com
+    status: 200
+x-enrichment:
+  date: '2026-10-13'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v5

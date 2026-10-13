@@ -1,0 +1,88 @@
+generated: '2026-10-13'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 6
+  own: 5
+  other_domain: 0
+  platform: 1
+  roles:
+  - api
+  - docs
+  - other
+  - source
+  - support
+  - website
+hosts:
+- host: api.digifinex.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: digifinex.com
+  role: api
+  relation: own
+- host: docs.digifinex.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - site-links
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - Documentation
+  - APIReference
+  serves:
+  - docs
+  registrable_domain: digifinex.com
+  role: docs
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: openapi.digifinex.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: digifinex.com
+  role: other
+  relation: own
+- host: support.digifinex.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - Support
+  serves: []
+  registrable_domain: digifinex.com
+  role: support
+  relation: own
+- host: www.digifinex.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - Website
+  - Login
+  - SignUp
+  - About
+  serves: []
+  registrable_domain: digifinex.com
+  role: website
+  relation: own

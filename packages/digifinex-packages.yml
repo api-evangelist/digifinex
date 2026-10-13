@@ -1,0 +1,6 @@
+name: DigiFinex packages
+generated: '2026-10-13'
+method: none
+source: https://registry.npmjs.org/digifinex
+note: No first-party SDK found. The docs ship sample code (PHP, JS, Python, Go) inline only. npm "digifinex" 1.0.0 is published by an unrelated maintainer with no repository link, so it is not recorded as official; PyPI digifinex 404. github.com/DigiFinex holds only legacy markdown docs (api) and a ccxt fork.
+packages: []

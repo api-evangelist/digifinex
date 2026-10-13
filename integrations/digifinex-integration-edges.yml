@@ -1,0 +1,16 @@
+generated: '2026-10-13'
+method: none
+source:
+- https://zapier.com/apps/digifinex/integrations
+- https://n8n.io/integrations/digifinex/
+- https://composio.dev/toolkits/digifinex
+- https://monid.ai/tools/digifinex
+checked:
+- https://composio.dev/toolkits/digifinex
+- https://monid.ai/tools/digifinex
+- https://n8n.io/integrations/digifinex/
+- https://zapier.com/apps/digifinex/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

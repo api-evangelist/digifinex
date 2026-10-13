@@ -1,0 +1,30 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/_ae-authored/digifinex-swap-openapi-generated.yml
+vocabulary:
+  name: DigiFinex Domain Vocabulary
+  description: 'Terms declared by DigiFinex''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-13'
+  terms:
+  - term: Market Data
+    definition: 'Resource group in the contract; its operation GET /public/time: Server Time'
+    tags:
+    - Resource Group
+    source: openapi/_ae-authored/digifinex-swap-openapi-generated.yml
+  - term: Account
+    definition: 'Resource group in the contract; its operation GET /account/balance: AccountBalance'
+    tags:
+    - Resource Group
+    source: openapi/_ae-authored/digifinex-swap-openapi-generated.yml
+  - term: Trading
+    definition: 'Resource group in the contract; its operation POST /trade/order_place: OrderPlace'
+    tags:
+    - Resource Group
+    source: openapi/_ae-authored/digifinex-swap-openapi-generated.yml
+  - term: Copy Trading
+    definition: 'Resource group in the contract; its operation POST /follow/sponsor_order: ExpertSponsorOrder'
+    tags:
+    - Resource Group
+    source: openapi/_ae-authored/digifinex-swap-openapi-generated.yml

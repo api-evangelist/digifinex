@@ -1,0 +1,466 @@
+name: DigiFinex API error codes
+generated: '2026-10-13'
+method: searched
+source:
+- https://docs.digifinex.com/en-ww/spot/v3/rest.html
+- https://docs.digifinex.com/en-ww/swap/v2/rest.html
+format: json-code-envelope
+envelope:
+  field: code
+  success_value: 0
+  note: Errors are returned as a numeric code in the JSON body; the spot API uses 5-digit codes, the swap API 6-digit codes
+    with a message name.
+problems:
+- code: 10001
+  title: Wrong request method, please check it's a GET or POST request
+  api: spot-v3
+  type: digifinex:spot:10001
+  description: Wrong request method, please check it's a GET or POST request
+- code: 10002
+  title: Invalid ApiKey
+  api: spot-v3
+  type: digifinex:spot:10002
+  description: Invalid ApiKey
+- code: 10003
+  title: Sign doesn't match
+  api: spot-v3
+  type: digifinex:spot:10003
+  description: Sign doesn't match
+- code: 10004
+  title: Illegal request parameters
+  api: spot-v3
+  type: digifinex:spot:10004
+  description: Illegal request parameters
+- code: 10005
+  title: Request frequency exceeds the limit
+  api: spot-v3
+  type: digifinex:spot:10005
+  description: Request frequency exceeds the limit
+- code: 10006
+  title: Unauthorized to execute this request
+  api: spot-v3
+  type: digifinex:spot:10006
+  description: Unauthorized to execute this request
+- code: 10007
+  title: IP address Unauthorized
+  api: spot-v3
+  type: digifinex:spot:10007
+  description: IP address Unauthorized
+- code: 10008
+  title: Timestamp for this request is invalid
+  api: spot-v3
+  type: digifinex:spot:10008
+  description: Timestamp for this request is invalid
+- code: 10009
+  title: Unexist endpoint or misses ACCESS-KEY, please check endpoint URL
+  api: spot-v3
+  type: digifinex:spot:10009
+  description: Unexist endpoint or misses ACCESS-KEY, please check endpoint URL
+- code: 10011
+  title: ApiKey expired. Please go to client side to re-create an ApiKey.
+  api: spot-v3
+  type: digifinex:spot:10011
+  description: ApiKey expired. Please go to client side to re-create an ApiKey.
+- code: 20002
+  title: Trade of this trading pair is suspended
+  api: spot-v3
+  type: digifinex:spot:20002
+  description: Trade of this trading pair is suspended
+- code: 20007
+  title: Price precision error
+  api: spot-v3
+  type: digifinex:spot:20007
+  description: Price precision error
+- code: 20008
+  title: Amount precision error
+  api: spot-v3
+  type: digifinex:spot:20008
+  description: Amount precision error
+- code: 20009
+  title: Amount is less than the minimum requirement
+  api: spot-v3
+  type: digifinex:spot:20009
+  description: Amount is less than the minimum requirement
+- code: 20010
+  title: Cash Amount is less than the minimum requirement
+  api: spot-v3
+  type: digifinex:spot:20010
+  description: Cash Amount is less than the minimum requirement
+- code: 20011
+  title: Insufficient balance
+  api: spot-v3
+  type: digifinex:spot:20011
+  description: Insufficient balance
+- code: 20012
+  title: 'Invalid trade type (valid value: buy/sell)'
+  api: spot-v3
+  type: digifinex:spot:20012
+  description: 'Invalid trade type (valid value: buy/sell)'
+- code: 20013
+  title: No order info found
+  api: spot-v3
+  type: digifinex:spot:20013
+  description: No order info found
+- code: 20014
+  title: 'Invalid date (Valid format: 2018-07-25)'
+  api: spot-v3
+  type: digifinex:spot:20014
+  description: 'Invalid date (Valid format: 2018-07-25)'
+- code: 20015
+  title: Date exceeds the limit
+  api: spot-v3
+  type: digifinex:spot:20015
+  description: Date exceeds the limit
+- code: 20018
+  title: Your have been banned for API trading by the system
+  api: spot-v3
+  type: digifinex:spot:20018
+  description: Your have been banned for API trading by the system
+- code: 20019
+  title: Wrong trading pair symbol, correct format:"base_quote", e.g. "btc_usdt"
+  api: spot-v3
+  type: digifinex:spot:20019
+  description: Wrong trading pair symbol, correct format:"base_quote", e.g. "btc_usdt"
+- code: 20020
+  title: You have violated the API trading rules and temporarily banned for trading. At present, we have certain restrictions
+    on the user's transaction rate and withdrawal rate.
+  api: spot-v3
+  type: digifinex:spot:20020
+  description: You have violated the API trading rules and temporarily banned for trading. At present, we have certain restrictions
+    on the user's transaction rate and withdrawal rate.
+- code: 20021
+  title: Invalid currency
+  api: spot-v3
+  type: digifinex:spot:20021
+  description: Invalid currency
+- code: 20022
+  title: The ending timestamp must be larger than the starting timestamp
+  api: spot-v3
+  type: digifinex:spot:20022
+  description: The ending timestamp must be larger than the starting timestamp
+- code: 20023
+  title: Invalid transfer type
+  api: spot-v3
+  type: digifinex:spot:20023
+  description: Invalid transfer type
+- code: 20024
+  title: Invalid amount
+  api: spot-v3
+  type: digifinex:spot:20024
+  description: Invalid amount
+- code: 20025
+  title: This currency is not transferable at the moment
+  api: spot-v3
+  type: digifinex:spot:20025
+  description: This currency is not transferable at the moment
+- code: 20026
+  title: Transfer amount exceed your balance
+  api: spot-v3
+  type: digifinex:spot:20026
+  description: Transfer amount exceed your balance
+- code: 20027
+  title: Abnormal account status
+  api: spot-v3
+  type: digifinex:spot:20027
+  description: Abnormal account status
+- code: 20028
+  title: Blacklist for transfer
+  api: spot-v3
+  type: digifinex:spot:20028
+  description: Blacklist for transfer
+- code: 20029
+  title: Transfer amount exceed your daily limit
+  api: spot-v3
+  type: digifinex:spot:20029
+  description: Transfer amount exceed your daily limit
+- code: 20030
+  title: You have no position on this trading pair
+  api: spot-v3
+  type: digifinex:spot:20030
+  description: You have no position on this trading pair
+- code: 20032
+  title: Withdrawal limited
+  api: spot-v3
+  type: digifinex:spot:20032
+  description: Withdrawal limited
+- code: 20033
+  title: Wrong Withdrawal ID
+  api: spot-v3
+  type: digifinex:spot:20033
+  description: Wrong Withdrawal ID
+- code: 20034
+  title: Withdrawal service of this crypto has been closed
+  api: spot-v3
+  type: digifinex:spot:20034
+  description: Withdrawal service of this crypto has been closed
+- code: 20035
+  title: Withdrawal limit
+  api: spot-v3
+  type: digifinex:spot:20035
+  description: Withdrawal limit
+- code: 20036
+  title: Withdrawal cancellation failed
+  api: spot-v3
+  type: digifinex:spot:20036
+  description: Withdrawal cancellation failed
+- code: 20037
+  title: The withdrawal address, Tag or chain type is not included in the withdrawal management list
+  api: spot-v3
+  type: digifinex:spot:20037
+  description: The withdrawal address, Tag or chain type is not included in the withdrawal management list
+- code: 20038
+  title: The withdrawal address is not on the white list
+  api: spot-v3
+  type: digifinex:spot:20038
+  description: The withdrawal address is not on the white list
+- code: 20039
+  title: Can't be canceled in current status
+  api: spot-v3
+  type: digifinex:spot:20039
+  description: Can't be canceled in current status
+- code: 20040
+  title: 'Withdraw too frequently; limitation: 3 times a minute, 100 times a day'
+  api: spot-v3
+  type: digifinex:spot:20040
+  description: 'Withdraw too frequently; limitation: 3 times a minute, 100 times a day'
+- code: 20041
+  title: Beyond the daily withdrawal limit
+  api: spot-v3
+  type: digifinex:spot:20041
+  description: Beyond the daily withdrawal limit
+- code: 20042
+  title: Current trading pair does not support API trading
+  api: spot-v3
+  type: digifinex:spot:20042
+  description: Current trading pair does not support API trading
+- code: 50000
+  title: Exception error
+  api: spot-v3
+  type: digifinex:spot:50000
+  description: Exception error
+- code: 400001
+  title: ParamMissing
+  api: swap-v2
+  type: digifinex:swap:400001
+  description: missing require param
+- code: 400002
+  title: ParamInvalid
+  api: swap-v2
+  type: digifinex:swap:400002
+  description: param invalid
+- code: 400003
+  title: InvalidIP
+  api: swap-v2
+  type: digifinex:swap:400003
+  description: unAuthentication ip
+- code: 400004
+  title: InvalidSign
+  api: swap-v2
+  type: digifinex:swap:400004
+  description: access-sign miss matched
+- code: 400005
+  title: PermissionDeny
+  api: swap-v2
+  type: digifinex:swap:400005
+  description: permission deny
+- code: 400006
+  title: InvalidApiKey
+  api: swap-v2
+  type: digifinex:swap:400006
+  description: invalid api key
+- code: 401001
+  title: OrderExist
+  api: swap-v2
+  type: digifinex:swap:401001
+  description: can not change leverage when exist no finish order
+- code: 401002
+  title: OverMaxOpenLimit
+  api: swap-v2
+  type: digifinex:swap:401002
+  description: position open value over max limit
+- code: 401003
+  title: NotEnoughMoney
+  api: swap-v2
+  type: digifinex:swap:401003
+  description: account balance not enough
+- code: 401004
+  title: InstrumentNotTrading
+  api: swap-v2
+  type: digifinex:swap:401004
+  description: instrument trade is suspended
+- code: 401005
+  title: InstrumentMaintain
+  api: swap-v2
+  type: digifinex:swap:401005
+  description: instrument under maintain
+- code: 401006
+  title: InstrumentMinSizeLimit
+  api: swap-v2
+  type: digifinex:swap:401006
+  description: order size less than mini order size
+- code: 401007
+  title: InvalidPricePrecision
+  api: swap-v2
+  type: digifinex:swap:401007
+  description: price precision invalid
+- code: 401008
+  title: MarketTradingNotSupport
+  api: swap-v2
+  type: digifinex:swap:401008
+  description: current instrument deny market trade
+- code: 401009
+  title: MarketNoOrder
+  api: swap-v2
+  type: digifinex:swap:401009
+  description: market order not support when opponent is empty
+- code: 401010
+  title: PriceOverMaxBuyLimit
+  api: swap-v2
+  type: digifinex:swap:401010
+  description: order price over max buy price
+- code: 401011
+  title: PriceBelowMinSellLimit
+  api: swap-v2
+  type: digifinex:swap:401011
+  description: order price less than min sell price
+- code: 401012
+  title: NotEnoughClosePosition
+  api: swap-v2
+  type: digifinex:swap:401012
+  description: not enough position to close
+- code: 401013
+  title: PriceOverLiquidationLimit
+  api: swap-v2
+  type: digifinex:swap:401013
+  description: order price inferior to liquidation price
+- code: 401014
+  title: OrderCountOverLimit
+  api: swap-v2
+  type: digifinex:swap:401014
+  description: batch order/cancel count over limit (max 20)
+- code: 401015
+  title: PositionNotIsolated
+  api: swap-v2
+  type: digifinex:swap:401015
+  description: can not do this when position mode is not isolated
+- code: 401016
+  title: PositionExist
+  api: swap-v2
+  type: digifinex:swap:401016
+  description: can not do this when position exist
+- code: 401017
+  title: PositionNotExist
+  api: swap-v2
+  type: digifinex:swap:401017
+  description: can not do this when position not exist
+- code: 401018
+  title: TransferNotAllow
+  api: swap-v2
+  type: digifinex:swap:401018
+  description: current transfer request not allowed
+- code: 401019
+  title: TransferInRisk
+  api: swap-v2
+  type: digifinex:swap:401019
+  description: current transfer has entered the risk control process, please contract customer service
+- code: 403001
+  title: FrequencyLimit
+  api: swap-v2
+  type: digifinex:swap:403001
+  description: request reach frequency limit
+- code: 403002
+  title: RequestForbidden
+  api: swap-v2
+  type: digifinex:swap:403002
+  description: request forbidden (repeat requests after reach frequency limit)
+- code: 403003
+  title: Disabled
+  api: swap-v2
+  type: digifinex:swap:403003
+  description: disabled for current user, please contract customer service
+- code: 404001
+  title: FollowExpertLocked
+  api: swap-v2
+  type: digifinex:swap:404001
+  description: expert is locked, can't open position
+- code: 404002
+  title: FollowSettleLocked
+  api: swap-v2
+  type: digifinex:swap:404002
+  description: in the contract settlement, it does not support to sponsor orders
+- code: 404003
+  title: FollowInstrumentNotExist
+  api: swap-v2
+  type: digifinex:swap:404003
+  description: the documentary contract variety is offline or does not exist
+- code: 404004
+  title: FollowOrderChangeHasPosition
+  api: swap-v2
+  type: digifinex:swap:404004
+  description: existing positions, does not support modification of margin mode or leverage
+- code: 404005
+  title: FollowOrderChangeHasFollow
+  api: swap-v2
+  type: digifinex:swap:404005
+  description: existing orders, does not support modification of margin mode or leverage
+- code: 404006
+  title: FollowOrderChangeHasOrder
+  api: swap-v2
+  type: digifinex:swap:404006
+  description: there is already a pending order, which does not support modifying the margin mode or leverage
+- code: 404007
+  title: FollowOrderPriceOffsetOverLimit
+  api: swap-v2
+  type: digifinex:swap:404007
+  description: the price of the order deviates from the mark price a lot, for the sake of your account risk, please reduce
+    the number of open positions
+- code: 404008
+  title: FollowOrderStopEarnTriggerPriceLarge
+  api: swap-v2
+  type: digifinex:swap:404008
+  description: the take profit price must be greater than the order price
+- code: 404009
+  title: FollowOrderStopEarnTriggerPriceLess
+  api: swap-v2
+  type: digifinex:swap:404009
+  description: the take profit price must be less than the order price
+- code: 404010
+  title: FollowOrderStopLossTriggerPriceLess
+  api: swap-v2
+  type: digifinex:swap:404010
+  description: the stop loss price must be lower than the order price
+- code: 404011
+  title: FollowOrderStopLossTriggerPriceLarge
+  api: swap-v2
+  type: digifinex:swap:404011
+  description: the stop loss price must be greater than the order price
+- code: 404012
+  title: FollowErrorOrderClosed
+  api: swap-v2
+  type: digifinex:swap:404012
+  description: the order has been executed to close the position
+- code: 404013
+  title: FollowOrderNotExist
+  api: swap-v2
+  type: digifinex:swap:404013
+  description: order does not exist
+- code: 404014
+  title: FollowStopProfitExist
+  api: swap-v2
+  type: digifinex:swap:404014
+  description: take profit already exists
+- code: 404015
+  title: FollowStopLossExist
+  api: swap-v2
+  type: digifinex:swap:404015
+  description: stop loss already exists
+- code: 500001
+  title: SystemError
+  api: swap-v2
+  type: digifinex:swap:500001
+  description: system error
+- code: 500002
+  title: SystemException
+  api: swap-v2
+  type: digifinex:swap:500002
+  description: system exception, pls retry
