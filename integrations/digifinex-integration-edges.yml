@@ -1,16 +1,46 @@
 generated: '2026-10-13'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/digifinex/integrations
 - https://n8n.io/integrations/digifinex/
 - https://composio.dev/toolkits/digifinex
 - https://monid.ai/tools/digifinex
 checked:
+- https://api.coingecko.com/api/v3/exchanges
 - https://composio.dev/toolkits/digifinex
 - https://monid.ai/tools/digifinex
 - https://n8n.io/integrations/digifinex/
+- https://raw.githubusercontent.com/ccxt/ccxt/master/exchanges.json
 - https://zapier.com/apps/digifinex/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: CCXT
+  partner: null
+  partner_match: null
+  type: coverage
+  channel: open-source-node
+  relationship: connector-coverage
+  direction: partner-built
+  evidence: https://github.com/ccxt/ccxt/blob/master/ts/src/digifinex.ts
+  ccxt_id: digifinex
+  ccxt_certified: null
+  ccxt_pro: null
+  matched_by: domain:digifinex.com
+  partner_gap: no ccxt repo in all/* (catalog gap)
+  detected_by: sweep-crypto.py
+  first_seen: '2026-10-13'
+- partner_name: CoinGecko
+  partner: coingecko
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://api.coingecko.com/api/v3/exchanges/digifinex
+  matched_by: domain:digifinex.com
+  coingecko_id: digifinex
+  trust_score: 8
+  detected_by: sweep-crypto.py
+  first_seen: '2026-10-13'
 templates: []
