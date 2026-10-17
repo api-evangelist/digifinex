@@ -85,40 +85,90 @@ common:
   name: Swap WebSocket API
 
 apis:
-- aid: digifinex:digifinex-spot-api
-  name: DigiFinex Spot and Margin REST API
-  description: Signed REST API (v3) for DigiFinex spot and margin market data, accounts, orders, transfers, deposits
-    and withdrawals.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+- aid: digifinex:digifinex-account-api
+  name: DigiFinex Account API
+  description: The Account API from DigiFinex — 16 operation(s) for account.
   humanURL: https://docs.digifinex.com/en-ww/spot/v3/rest.html
   baseURL: https://openapi.digifinex.com/v3
   tags:
-  - Spot
-  - Margin
-  - Trading
+  - Account
   properties:
+  - type: OpenAPI
+    url: openapi/digifinex-account-api-openapi.yml
   - type: Documentation
     url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
-  - type: OpenAPI
-    url: openapi/_ae-authored/digifinex-spot-openapi-generated.yml
-    x-provenance: generated
-- aid: digifinex:digifinex-swap-api
-  name: DigiFinex Perpetual Swap REST API
-  description: REST API (v2) for DigiFinex perpetual swap (contract) market data, accounts, positions and orders.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.digifinex.com/en-ww/swap/v2/rest.html
-  baseURL: https://openapi.digifinex.com/swap/v2
-  tags:
-  - Derivatives
-  - Perpetual Swaps
-  - Trading
-  properties:
   - type: Documentation
     url: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+- aid: digifinex:digifinex-copy-trading-api
+  name: DigiFinex Copy Trading API
+  description: The Copy Trading API from DigiFinex — 11 operation(s) for copy trading.
+  humanURL: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  baseURL: https://openapi.digifinex.com/v3
+  tags:
+  - Copy Trading
+  properties:
   - type: OpenAPI
-    url: openapi/_ae-authored/digifinex-swap-openapi-generated.yml
-    x-provenance: generated
-
+    url: openapi/digifinex-copy-trading-api-openapi.yml
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+- aid: digifinex:digifinex-margin-api
+  name: DigiFinex Margin API
+  description: The Margin API from DigiFinex — 5 operation(s) for margin.
+  humanURL: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  baseURL: https://openapi.digifinex.com/v3
+  tags:
+  - Margin
+  properties:
+  - type: OpenAPI
+    url: openapi/digifinex-margin-api-openapi.yml
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+- aid: digifinex:digifinex-market-data-api
+  name: DigiFinex Market Data API
+  description: The Market Data API from DigiFinex — 21 operation(s) for market data.
+  humanURL: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  baseURL: https://openapi.digifinex.com/v3
+  tags:
+  - Market Data
+  properties:
+  - type: OpenAPI
+    url: openapi/digifinex-market-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+- aid: digifinex:digifinex-orders-api
+  name: DigiFinex Orders API
+  description: The Orders API from DigiFinex — 9 operation(s) for orders.
+  humanURL: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  baseURL: https://openapi.digifinex.com/v3
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/digifinex-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+- aid: digifinex:digifinex-trading-api
+  name: DigiFinex Trading API
+  description: The Trading API from DigiFinex — 8 operation(s) for trading.
+  humanURL: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  baseURL: https://openapi.digifinex.com/v3
+  tags:
+  - Trading
+  properties:
+  - type: OpenAPI
+    url: openapi/digifinex-trading-api-openapi.yml
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+  - type: Documentation
+    url: https://docs.digifinex.com/en-ww/swap/v2/rest.html
 x-coverage:
   state: none
   reason: no-developer-program

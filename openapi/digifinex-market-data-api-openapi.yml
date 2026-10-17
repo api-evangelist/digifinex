@@ -1,0 +1,688 @@
+openapi: 3.2.0
+info:
+  title: Digifinex Market Data API
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generated-from: documentation
+  x-generator: scratch build.py (verbatim table extraction, no model)
+  x-provenance: generated
+  x-refined-note:
+  - x-sources differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Market Data across 2 of this provider''s published API definitions: digifinex-spot-openapi-generated.yml, digifinex-swap-openapi-generated.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://openapi.digifinex.com/v3
+- url: https://openapi.digifinex.com/swap/v2
+tags:
+- name: Market Data
+paths:
+  /ping:
+    get:
+      operationId: get_ping
+      tags:
+      - Market Data
+      summary: Server ping
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /time:
+    get:
+      operationId: get_time
+      tags:
+      - Market Data
+      summary: Server timestamp
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /markets:
+    get:
+      operationId: get_markets
+      tags:
+      - Market Data
+      summary: All the market description
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /ticker:
+    get:
+      operationId: get_ticker
+      tags:
+      - Market Data
+      summary: ticker price
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: symbol
+        in: query
+        required: false
+        schema:
+          type: string
+        description: '"btc_usdt"'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /trades:
+    get:
+      operationId: get_trades
+      tags:
+      - Market Data
+      summary: Get recent trades
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: symbol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: '"btc_usdt"'
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Limit of trades returned, default 100, maximum 500
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /kline:
+    get:
+      operationId: get_kline
+      tags:
+      - Market Data
+      summary: Get candles data
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: symbol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: '"btc_usdt"'
+      - name: period
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Candle timeframe type: 1,5,15,30,60,240,720,1D,1W'
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Candle starting time in timestamp, default 200 period befor end_time
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Candle ending time in timestamp, default current timestamp
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /spot/symbols:
+    get:
+      operationId: get_spot_symbols
+      tags:
+      - Market Data
+      summary: Spot trading pair symbol
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /trades/symbols:
+    get:
+      operationId: get_trades_symbols
+      tags:
+      - Market Data
+      summary: Whether is API trading enabled for the trading pair
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /currencies:
+    get:
+      operationId: get_currencies
+      tags:
+      - Market Data
+      summary: Get currency deposit and withdrawal information
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: true
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: cryptocurrency
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /public/time:
+    get:
+      operationId: get_public_time
+      tags:
+      - Market Data
+      summary: Server Time
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/api_weight:
+    get:
+      operationId: get_public_api_weight
+      tags:
+      - Market Data
+      summary: Api Weight
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/instruments:
+    get:
+      operationId: get_public_instruments
+      tags:
+      - Market Data
+      summary: Instruments
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: instrument type 1 simulate 2 real default real
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/instrument:
+    get:
+      operationId: get_public_instrument
+      tags:
+      - Market Data
+      summary: Instrument
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/depth:
+    get:
+      operationId: get_public_depth
+      tags:
+      - Market Data
+      summary: OrderBook
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'request level: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/trades:
+    get:
+      operationId: get_public_trades
+      tags:
+      - Market Data
+      summary: RecentTrades
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'request level: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/ticker:
+    get:
+      operationId: get_public_ticker
+      tags:
+      - Market Data
+      summary: Ticker
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/tickers:
+    get:
+      operationId: get_public_tickers
+      tags:
+      - Market Data
+      summary: Tickers
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: instrument type 1 simulate 2 real default real
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/candles:
+    get:
+      operationId: get_public_candles
+      tags:
+      - Market Data
+      summary: RecentCandle
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: granularity
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'candle granularity: 1m 5m 15m 30m 1h 4h 12h 1d 1w'
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: number
+        description: 'return raws: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/funding_rate:
+    get:
+      operationId: get_public_funding_rate
+      tags:
+      - Market Data
+      summary: CurrentFundingRate
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/candles_history:
+    get:
+      operationId: get_public_candles_history
+      tags:
+      - Market Data
+      summary: CandleHistory
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: granularity
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'candle granularity: 1m 5m 15m 30m 1h 4h 12h 1d 1w'
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /public/funding_rate_history:
+    get:
+      operationId: get_public_funding_rate_history
+      tags:
+      - Market Data
+      summary: FundingRateHistory
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: true
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+components:
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: User's API-KEY
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: HMAC-SHA256 signature of the request parameters, keyed by the API secret, as documented
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Timestamp in seconds (spot); requests more than 5 seconds old are rejected unless ACCESS-RECV-WINDOW is set
+x-refined-from:
+- digifinex-spot-openapi-generated.yml
+- digifinex-swap-openapi-generated.yml

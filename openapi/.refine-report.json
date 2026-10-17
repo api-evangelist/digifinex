@@ -1,0 +1,27 @@
+{
+  "provider": "digifinex",
+  "sources": [
+    "_ae-authored/digifinex-spot-openapi-generated.yml",
+    "_ae-authored/digifinex-swap-openapi-generated.yml"
+  ],
+  "outputs": [
+    "digifinex-account-api-openapi.yml",
+    "digifinex-margin-api-openapi.yml",
+    "digifinex-market-data-api-openapi.yml",
+    "digifinex-orders-api-openapi.yml",
+    "digifinex-copy-trading-api-openapi.yml",
+    "digifinex-trading-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "digifinex-spot-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "digifinex-swap-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tag 'Account' spans 2 source specs (digifinex-spot-openapi-generated.yml, digifinex-swap-openapi-generated.yml): per-path servers applied",
+    "tag 'Market Data' spans 2 source specs (digifinex-spot-openapi-generated.yml, digifinex-swap-openapi-generated.yml): per-path servers applied",
+    "apis.yml register: written (+6 apis, 6 total)"
+  ],
+  "skipped": []
+}

@@ -1,0 +1,448 @@
+openapi: 3.2.0
+info:
+  title: DigiFinex Perpetual Swap REST Trading API
+  version: '2.0'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 41 operation(s) read from the public reference page https://docs.digifinex.com/en-ww/swap/v2/rest.html (each operation names its page in x-source; every path and method is copied verbatim from the page, parameters from its request tables).'
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: scratch build.py (verbatim table extraction, no model)
+  x-sources:
+  - https://docs.digifinex.com/en-ww/swap/v2/rest.html
+servers:
+- url: https://openapi.digifinex.com/swap/v2
+tags:
+- name: Trading
+paths:
+  /trade/order_place:
+    post:
+      operationId: post_trade_order_place
+      tags:
+      - Trading
+      summary: OrderPlace
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - type
+              - order_type
+              - size
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                type:
+                  type: number
+                  description: 'type: 1 open long 2 open short 3 close long 4 close short'
+                order_type:
+                  type: number
+                  description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+                size:
+                  type: number
+                  description: order size
+                price:
+                  type: string
+                  description: order price, necessary if not market order
+                post_only:
+                  type: boolean
+                  description: is post-only order, default false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/cancel_order:
+    post:
+      operationId: post_trade_cancel_order
+      tags:
+      - Trading
+      summary: CancelOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - order_id
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                order_id:
+                  type: string
+                  description: order ID
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/batch_order:
+    post:
+      operationId: post_trade_batch_order
+      tags:
+      - Trading
+      summary: BatchOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - type
+              - order_type
+              - size
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                type:
+                  type: number
+                  description: 'type: 1 open long 2 open short 3 close long 4 close short'
+                order_type:
+                  type: number
+                  description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+                size:
+                  type: number
+                  description: order size
+                price:
+                  type: string
+                  description: order price, necessary if not market order
+                post_only:
+                  type: boolean
+                  description: is post-only order, default false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/batch_cancel_order:
+    post:
+      operationId: post_trade_batch_cancel_order
+      tags:
+      - Trading
+      summary: BatchCancel
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - order_id
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                order_id:
+                  type: string
+                  description: order ID
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/open_orders:
+    get:
+      operationId: get_trade_open_orders
+      tags:
+      - Trading
+      summary: OpenOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'type: 1 open long 2 open short 3 close long 4 close short'
+      - name: order_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+      - name: order_status
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'order status: 0: open 1: part filled'
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/order_info:
+    get:
+      operationId: get_trade_order_info
+      tags:
+      - Trading
+      summary: OrderInfo
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrumnent id
+      - name: order_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: order id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/history_orders:
+    get:
+      operationId: get_trade_history_orders
+      tags:
+      - Trading
+      summary: HistoryOrder
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'type: 1 open long 2 open short 3 close long 4 close short'
+      - name: order_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+      - name: order_status
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'order status: -1: canceled 2: filled'
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+  /trade/history_trades:
+    get:
+      operationId: get_trade_history_trades
+      tags:
+      - Trading
+      summary: HistoryTrade
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'type: 1 open long 2 open short 3 close long 4 close short'
+      - name: order_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'order type: 0: limit_price 1: IOC_opponent 2: IOC_Optimal_5 3: IOC_Optimal_10 13: IOC_Optimal_20 4: IOC_custom_price 6: GTC_opponent 7: GTC_Optimal_5 8: GTC_Optimal_10 14: GTC_Optimal_20 10: FOK_opponent 11: FOK_Optimal_5 12: FOK_Optimal_10 15: FOK_Optimal_20 9: FOK_custom_price'
+      - name: order_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: order id
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+components:
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: User's API-KEY
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: HMAC-SHA256 signature of the request parameters, keyed by the API secret, as documented
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Timestamp in seconds (spot); requests more than 5 seconds old are rejected unless ACCESS-RECV-WINDOW is set

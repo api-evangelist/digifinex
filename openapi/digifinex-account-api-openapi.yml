@@ -1,0 +1,741 @@
+openapi: 3.2.0
+info:
+  title: Digifinex Account API
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generated-from: documentation
+  x-generator: scratch build.py (verbatim table extraction, no model)
+  x-provenance: generated
+  x-refined-note:
+  - x-sources differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Account across 2 of this provider''s published API definitions: digifinex-spot-openapi-generated.yml, digifinex-swap-openapi-generated.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://openapi.digifinex.com/v3
+- url: https://openapi.digifinex.com/swap/v2
+tags:
+- name: Account
+paths:
+  /spot/assets:
+    get:
+      operationId: get_spot_assets
+      tags:
+      - Account
+      summary: Spot account assets
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /{market}/financelog:
+    get:
+      operationId: get_market_financelog
+      tags:
+      - Account
+      summary: Spot, margin, OTC financial logs
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: market
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account type as documented ("spot" or "margin")
+      - name: currency_mark
+        in: query
+        required: false
+        schema:
+          type: string
+        description: ''
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: ''
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Default 100, maximum 1000
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /transfer:
+    post:
+      operationId: post_transfer
+      tags:
+      - Account
+      summary: Transfer assets among accounts
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - currency_mark
+              - num
+              - from
+              - to
+              properties:
+                currency_mark:
+                  type: string
+                  description: Currency
+                num:
+                  type: string
+                  description: Transfer amount
+                from:
+                  type: integer
+                  description: Transfer from, 1 for spot account, 2 for margin account, 3 for OTC account
+                to:
+                  type: integer
+                  description: Transfer to, 1 for spot account, 2 for margin account, 3 for OTC account
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /deposit/address:
+    get:
+      operationId: get_deposit_address
+      tags:
+      - Account
+      summary: Deposit address inquiry
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: true
+        schema:
+          type: string
+        description: btc, ltc, bch, eth, etc ...
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /deposit/history:
+    get:
+      operationId: get_deposit_history
+      tags:
+      - Account
+      summary: Deposit history
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: query initial ID
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Query record size
+      - name: direct
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns to the sorting direction of the record
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /withdraw/history:
+    get:
+      operationId: get_withdraw_history
+      tags:
+      - Account
+      summary: Withdrawal history
+      x-source: https://docs.digifinex.com/en-ww/spot/v3/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+        description: query initial ID
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: string
+        description: query record size
+      - name: direct
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Return to the sorting direction of the record
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/v3
+  /account/balance:
+    get:
+      operationId: get_account_balance
+      tags:
+      - Account
+      summary: AccountBalance
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'instrument type: 1 Simulate 2 Real'
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency, currency has higher priority than type
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/transfer:
+    post:
+      operationId: post_account_transfer
+      tags:
+      - Account
+      summary: AccountTransfer
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              - currency
+              - transfer_amount
+              properties:
+                type:
+                  type: number
+                  description: 'transfer type 1: spot to swap, 2 swap to spot'
+                currency:
+                  type: string
+                  description: transfer currency
+                transfer_amount:
+                  type: string
+                  description: transfer amount
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/positions:
+    get:
+      operationId: get_account_positions
+      tags:
+      - Account
+      summary: Positions
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'instrument type: 1 Simulate 2 Real'
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id, instrument id has higher priority than type
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/position_mode:
+    post:
+      operationId: post_account_position_mode
+      tags:
+      - Account
+      summary: PositionMode
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - margin_mode
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                margin_mode:
+                  type: string
+                  description: 'position mode: "crossed" or "isolated"'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/position_margin:
+    post:
+      operationId: post_account_position_margin
+      tags:
+      - Account
+      summary: PositionMargin
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - side
+              - type
+              - amount
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                side:
+                  type: string
+                  description: 'position side: "long" or "short"'
+                type:
+                  type: number
+                  description: type 1 add, 2 reduce
+                amount:
+                  type: string
+                  description: operate amount
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/leverage:
+    post:
+      operationId: post_account_leverage
+      tags:
+      - Account
+      summary: SetLeverage
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - instrument_id
+              - leverage
+              properties:
+                instrument_id:
+                  type: string
+                  description: instrument id
+                leverage:
+                  type: number
+                  description: leverage
+                margin_mode:
+                  type: string
+                  description: 'position mode: "crossed" or "isolated"'
+                side:
+                  type: string
+                  description: 'position side: "long" or "short", valid only in isolated mode'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/trading_fee_rate:
+    get:
+      operationId: get_account_trading_fee_rate
+      tags:
+      - Account
+      summary: TradingFee
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: instrument id
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/finance_record:
+    get:
+      operationId: get_account_finance_record
+      tags:
+      - Account
+      summary: Bills
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: currency
+      - name: finance_type
+        in: query
+        required: false
+        schema:
+          type: number
+        description: finance type 1:transfer in 2:transfer out 3:open long 4:open short 5:close long 6:close short 9:ADL-close short 10:ADL-close long 15:funding fee 16:experience token
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/funding_fee:
+    get:
+      operationId: get_account_funding_fee
+      tags:
+      - Account
+      summary: Funding Fee
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: instrument_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: instrument id
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+  /account/transfer_record:
+    get:
+      operationId: get_account_transfer_record
+      tags:
+      - Account
+      summary: TransferRecord
+      x-source: https://docs.digifinex.com/en-ww/swap/v2/rest.html
+      x-public: false
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: transfer currency
+      - name: start_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query start milliseconds since UNIX epoch
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: number
+        description: query end milliseconds since UNIX epoch
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+        description: 'query raws: 1-100, default 20'
+      security:
+      - accessKey: []
+        accessSign: []
+        accessTimestamp: []
+      responses:
+        '200':
+          description: 'Success; the body carries "code": 0 as documented.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: Status code (0 = success)
+    servers:
+    - url: https://openapi.digifinex.com/swap/v2
+components:
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: User's API-KEY
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: HMAC-SHA256 signature of the request parameters, keyed by the API secret, as documented
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Timestamp in seconds (spot); requests more than 5 seconds old are rejected unless ACCESS-RECV-WINDOW is set
+x-refined-from:
+- digifinex-spot-openapi-generated.yml
+- digifinex-swap-openapi-generated.yml
