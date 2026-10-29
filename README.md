@@ -64,5 +64,112 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-DigiFinex is a company surfaced via the API Evangelist harvest backlog (source: market-gap:crypto-exchanges) and added to the network as a stub for full-pipeline profiling.
-- https://www.digifinex.com
+DigiFinex is a centralized cryptocurrency exchange offering spot, margin and perpetual swap (USDT-margined) trading, OTC, copy trading and a crypto card. It publishes a public developer API: a signed REST API for spot and margin (openapi.digifinex.com/v3), a REST API for perpetual swaps (openapi.digifinex.com/swap/v2), and WebSocket market and account streams, documented at docs.digifinex.com. Private endpoints are signed with ACCESS-KEY, ACCESS-SIGN (HMAC-SHA256) and ACCESS-TIMESTAMP headers.
+
+**Areas:** Company · Cryptocurrency · Exchange · Trading · Derivatives · WebSocket
+
+## DigiFinex on APIs.io
+
+Everything profiled for DigiFinex is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/digifinex/](https://apis.io/providers/digifinex/)** — or go straight to one of the APIs or properties below.
+
+### APIs (6)
+
+- [DigiFinex Account API](https://apis.io/apis/digifinex/digifinex-account-api/) — The Account API from DigiFinex — 16 operation(s) for account.
+- [DigiFinex Copy Trading API](https://apis.io/apis/digifinex/digifinex-copy-trading-api/) — The Copy Trading API from DigiFinex — 11 operation(s) for copy trading.
+- [DigiFinex Margin API](https://apis.io/apis/digifinex/digifinex-margin-api/) — The Margin API from DigiFinex — 5 operation(s) for margin.
+- [DigiFinex Market Data API](https://apis.io/apis/digifinex/digifinex-market-data-api/) — The Market Data API from DigiFinex — 21 operation(s) for market data.
+- [DigiFinex Orders API](https://apis.io/apis/digifinex/digifinex-orders-api/) — The Orders API from DigiFinex — 9 operation(s) for orders.
+- [DigiFinex Trading API](https://apis.io/apis/digifinex/digifinex-trading-api/) — The Trading API from DigiFinex — 8 operation(s) for trading.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [DigiFinex MCP Server (candidate)](https://apis.io/servers/digifinex/digifinex-mcp-server-candidate/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [DigiFinex API Rules](https://apis.io/rules/digifinex/digifinex-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Digifinex Authentication](https://apis.io/security/digifinex/digifinex-authentication/)
+- [Digifinex Domain Security](https://apis.io/security/digifinex/digifinex-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Digifinex Rate Limits](https://apis.io/rate-limits/digifinex/digifinex-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.digifinex.com)
+- [Documentation](https://docs.digifinex.com/en-ww/)
+- [API reference](https://docs.digifinex.com/en-ww/spot/v3/rest.html)
+- [Sign up](https://www.digifinex.com/en-ww/n/register)
+- [Support](https://support.digifinex.com/hc/en-us)
+- [GitHub](https://github.com/DigiFinex)
+
+## API Evangelist rating
+
+**Kin Score 25.4** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 11.8 |
+| Contract governance | 22.0 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 13.2 |
+
+**Agent readiness 22.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.7** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/digifinex/](https://apis.io/providers/digifinex/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DigiFinex: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/digifinex/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
